@@ -2,4 +2,4 @@
 
 To run the setup do this:
 
-    ansible-playbook workstation-setup.yml --connection=local
+    ansible-playbook -i local.hosts workstation-setup.yml
