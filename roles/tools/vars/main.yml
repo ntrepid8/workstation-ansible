@@ -1,0 +1,15 @@
+---
+apt_packages:
+  - git
+  - curl
+  - python-dev
+  - ipython
+  - ipython3
+  - unity-tweak-tool
+  - network-manager-vpnc
+  - network-manager-openvpn
+  - vlc
+pathogen_packages:
+  - {"name": "vim-sensible", "repo": "git://github.com/tpope/vim-sensible.git"}
+  - {"name": "vim-ansible-yaml", "repo": "git://github.com/chase/vim-ansible-yaml.git"}
+  - {"name": "python-mode", "repo": "git://github.com/klen/python-mode.git"}

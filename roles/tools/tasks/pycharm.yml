@@ -1,0 +1,13 @@
+---
+- name: create pycharm directory
+  file:
+    path: /home/{{ install_user }}/bin/pycharm
+    state: directory
+    mode: 0775
+    owner: "{{ install_user }}"
+    group: "{{ install_user }}"
+
+- name: download pycharm
+  get_url:
+    url: http://download.jetbrains.com/python/pycharm-professional-3.4.1.tar.gz
+    dest: /tmp/pycharm-professional-3.4.1.tar.gz

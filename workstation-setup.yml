@@ -1,0 +1,7 @@
+---
+- name: configure workstation tools
+  hosts: localhost
+  vars:
+    install_user: ntrepid8
+  roles:
+    - tools

@@ -1,0 +1,12 @@
+---
+- name: silence oracle license gui
+  shell: "{{ item }}"
+  with_items:
+    - "echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections"
+    - "echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections"
+
+- name: add oracle java ppa
+  apt_repository: repo=ppa:webupd8team/java
+
+- name: install java7
+  apt: update_cache=yes name=oracle-java7-installer

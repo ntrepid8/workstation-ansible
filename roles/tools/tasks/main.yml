@@ -1,0 +1,23 @@
+---
+- name: update package cache
+  apt: update_cache=yes
+
+- name: upgrade packages
+  apt: upgrade=dist
+
+#- name: install common ppas
+#  apt_repository: repo={{ item }}
+#  with_items: apt_repositories
+
+- name: install common tools
+  apt: name={{ item }} state=latest
+  with_items: apt_packages
+
+- name: setup vim and pathogen
+  include: vim.yml
+
+- name: setup oracle java
+  include: java.yml
+
+- name: download and install pychamr
+  include: pycharm.yml

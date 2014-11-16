@@ -1,0 +1,10 @@
+---
+- name: add theme ppa
+  apt_repository:
+    repo: ppa:noobslab/themes
+    state: present
+
+- name: install numix theme
+  apt: 
+    update_cache: yes 
+    name: numix-gtk-theme

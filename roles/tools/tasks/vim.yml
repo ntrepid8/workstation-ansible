@@ -1,0 +1,49 @@
+---
+- name: Install vim
+  apt: name=vim state=latest
+
+- name: create pathogen directories
+  file: 
+    path: /home/{{ install_user }}/.vim/{{ item }}
+    owner: "{{ install_user }}"
+    group: "{{ install_user }}"
+    mode: 0755
+    state: directory
+  with_items:
+    - autoload
+    - bundle
+
+- name: download pathogen
+  get_url:
+    url: https://tpo.pe/pathogen.vim
+    dest: /home/{{ install_user }}/.vim/pathogen.vim
+
+- name: set permissions on pathogen.vim
+  file: 
+    path: /home/{{ install_user }}/.vim/pathogen.vim
+    owner: "{{ install_user }}"
+    group: "{{ install_user }}"
+    mode: 0644
+
+- name: copy vimrc
+  copy: 
+    src: vimrc
+    dest: /home/{{ install_user }}/.vimrc
+    owner: "{{ install_user }}"
+    group: "{{ install_user }}"
+    mode: 0644
+
+- name: install pathogen packages
+  git:
+    repo: "{{ item.repo }}"
+    dest: /home/{{ install_user }}/.vim/bundle/{{ item.name }}
+    accept_hostkey: yes
+  with_items: pathogen_packages
+
+- name: set permissions on pathogen packages
+  file:
+    path: /home/{{ install_user }}/.vim/bundle/{{ item.name }}
+    owner: "{{ install_user }}"
+    group: "{{ install_user }}"
+    mode: 0755
+  with_items: pathogen_packages
