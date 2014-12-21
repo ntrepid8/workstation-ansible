@@ -16,11 +16,11 @@
 - name: download pathogen
   get_url:
     url: https://tpo.pe/pathogen.vim
-    dest: /home/{{ install_user }}/.vim/pathogen.vim
+    dest: /home/{{ install_user }}/.vim/autoload/pathogen.vim
 
 - name: set permissions on pathogen.vim
   file: 
-    path: /home/{{ install_user }}/.vim/pathogen.vim
+    path: /home/{{ install_user }}/.vim/autoload/pathogen.vim
     owner: "{{ install_user }}"
     group: "{{ install_user }}"
     mode: 0644

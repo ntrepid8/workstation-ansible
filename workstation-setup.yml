@@ -3,5 +3,6 @@
   hosts: localhost
   vars:
     install_user: ntrepid8
+    pycharm: 4.0.3
   roles:
     - tools
